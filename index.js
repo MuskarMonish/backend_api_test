@@ -32,7 +32,7 @@ app.use(express.json());
 
         try {
             // Check if the username already exists
-            const usernameExists = await checkUsernameExists('monish');
+            const usernameExists = await checkUsernameExists(username);
             if (usernameExists) {
                 res.status(400).json({ message: 'Username already exists' });
                 return;
@@ -40,7 +40,7 @@ app.use(express.json());
 
             // Insert new user data into the Users table
             const query = 'INSERT INTO Users (username, password) VALUES ($1, $2)';
-            const values = ['monish', 'password'];
+            const values = [username, password];
             await pool.query(query, values);
 
             res.status(200).json({ message: 'User registered successfully' });
@@ -52,11 +52,11 @@ app.use(express.json());
     // Endpoint for user login
     app.post('/login', async (req, res) => {
         const { username,password } = req.body;
-
+        a= username;
         try {
             // Check if the username and password match
             const query = 'SELECT * FROM Users WHERE username = $1 AND password = $2';
-            const values = ['monish', 'password'];
+            const values = [a, password];
             const result = await pool.query(query, values);
 
             if (result.rows.length === 0) {
