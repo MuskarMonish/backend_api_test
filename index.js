@@ -100,7 +100,7 @@ app.use(express.json());
             // Insert new blog post into the Blogs table
             const username = result.rows[0].username;
             const insertQuery = 'INSERT INTO Blogpost (username, title, description) VALUES ($1, $2, $3)';
-            const insertValues = [username, 'hello world2', 'welcome to the world of programming2'];
+            const insertValues = [username, title, description];
             await pool.query(insertQuery, insertValues);
 
             res.status(200).json({ message: 'Blog post created successfully' });
