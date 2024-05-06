@@ -20,6 +20,11 @@ app.use(express.json());
         }
     };
 
+    // Endpoint for the home page
+    app.get('/', (req, res) => {
+        res.send('Welcome to the backend test API');
+    });
+
     // Endpoint for registering a user
     app.post('/register', async (req, res) => {
         const { username, password } = req.body;
