@@ -22,7 +22,11 @@ app.use(express.json());
 
     // Endpoint for the home page
     app.get('/', (req, res) => {
-        res.send('Welcome to the backend test API');
+        res.send('Welcome to Backend test API');
+        res.send('/register for registering a user');
+        res.send('/login for user login and generating api_key');
+        res.send('/blog for creating a blog post(please provide api_key in header)');
+        res.send('/blogs for getting all blog posts for a user(please provide api_key in header)');
     });
 
     // Endpoint for registering a user
@@ -69,7 +73,7 @@ app.use(express.json());
             const insertQuery = 'INSERT INTO ApiKeys (username, api_key) VALUES ($1, $2)';
             const insertValues = [username, apiKey];
             await pool.query(insertQuery, insertValues);
-
+            res.send('api_key: '+ apiKey);
             res.status(200).json({ api_key: apiKey });
         } catch (error) {
             console.error('Error logging in:', error);
