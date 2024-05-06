@@ -83,6 +83,10 @@ app.use(express.json());
     app.post('/blog', async (req, res) => {
         const { title, description } = req.body;
         const apiKey = req.headers['api_key'];
+        if (!apiKey) {
+            res.status(401).json({ message: 'API key is required' });
+            return;
+        }
 
         try {
             // Check if the API key is valid
@@ -111,6 +115,11 @@ app.use(express.json());
     // Endpoint for getting all blog posts for a user
     app.get('/blogs', async (req, res) => {
         const apiKey = req.headers['api_key'];
+        
+        if (!apiKey) {
+            res.status(401).json({ message: 'API key is required' });
+            return;
+        }
 
         try {
             // Check if the API key is valid
