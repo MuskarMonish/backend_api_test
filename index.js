@@ -1,18 +1,11 @@
 const express = require('express');
-const { Pool } = require('pg');
+const { pool } = require('./db/citus');
 
 const app = express();
 
 app.use(express.json());
 
 
-    const pool = new Pool({
-        user: 'postgres',
-        host: 'localhost',
-        database: 'postgres',
-        password: 'postgres',
-        port: 5432, // default PostgreSQL port
-    });
 
     // Check if the username already exists in the database
     const checkUsernameExists = async (username) => {
