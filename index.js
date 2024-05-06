@@ -70,7 +70,6 @@ app.use(express.json());
             const insertQuery = 'INSERT INTO ApiKeys (username, api_key) VALUES ($1, $2)';
             const insertValues = [username, apiKey];
             await pool.query(insertQuery, insertValues);
-            res.send('api_key: '+ apiKey);
             res.status(200).json({ api_key: apiKey });
         } catch (error) {
             console.error('Error logging in:', error);
