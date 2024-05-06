@@ -22,11 +22,8 @@ app.use(express.json());
 
     // Endpoint for the home page
     app.get('/', (req, res) => {
-        res.send('Welcome to Backend test API');
-        res.send('/register for registering a user');
-        res.send('/login for user login and generating api_key');
-        res.send('/blog for creating a blog post(please provide api_key in header)');
-        res.send('/blogs for getting all blog posts for a user(please provide api_key in header)');
+        res.send('Welcome to Backend test \n /register for registering a user \n /login for user login and generating api_key \n /blog for creating a blog post(please provide api_key in header) \n /blogs for getting all blog posts for a user(please provide api_key in header)');
+        
     });
 
     // Endpoint for registering a user
